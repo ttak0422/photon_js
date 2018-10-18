@@ -1,0 +1,25 @@
+{
+  "name": "phina_photon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=development",
+    "release": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ttak0422/phina_photon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ttak0422/phina_photon/issues"
+  },
+  "homepage": "https://github.com/ttak0422/phina_photon#readme",
+  "devDependencies": {
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
