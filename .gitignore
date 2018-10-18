@@ -62,3 +62,7 @@ typings/
 
 # ビルド結果
 bundle.js
+
+# 外部ライブラリ
+Photon-Javascript_SDK.d.ts
+Photon-Javascript_SDK.js
