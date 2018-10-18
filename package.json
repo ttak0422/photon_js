@@ -1,5 +1,5 @@
 {
-  "name": "phina_photon",
+  "name": "photon_js",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ttak0422/phina_photon.git"
+    "url": "git+https://github.com/ttak0422/photon_js.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ttak0422/phina_photon/issues"
+    "url": "https://github.com/ttak0422/photon_js/issues"
   },
-  "homepage": "https://github.com/ttak0422/phina_photon#readme",
+  "homepage": "https://github.com/ttak0422/photon_js#readme",
   "devDependencies": {
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
