@@ -18,8 +18,9 @@
   
   ## ビルド
   
-    `npm run build`か`npm run release`を実行．
+  
+  `npm run build` か `npm run release` を実行．
     
   ## 実行
   
-    `dist/index.html`を開く．
+  `dist/index.html`を開く．
