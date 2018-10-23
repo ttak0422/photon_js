@@ -27,6 +27,10 @@ export default class Actor extends Photon.LoadBalancing.Actor {
         return super.getRoom();
     }
 
+    hasVisual(){
+        return !!(this.visual);
+    }
+
     setVisual(visual : Visual){
         this.visual = visual;
         this.visual.update(this.posX, this.posY);

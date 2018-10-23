@@ -52,7 +52,7 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
 
     onActorJoin(actor : Actor){
         console.log(`Actor ${actor.actorNr} が入室しました`);
-        actor.setVisual(new Visual(actor));
+        if(!actor.hasVisual()) actor.setVisual(new Visual(actor));
     }
 
     onActorLeave(actor : Actor){
@@ -136,8 +136,6 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
     }
 
     private setupUI(){
-        //const canvas = <HTMLCanvasElement>document.getElementById('canvas');
-
         window.addEventListener("keydown", ( () => {
             const key = {
                 37 : [-1, 0], //left
@@ -157,7 +155,7 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
     private setupScene(){
         for(let aNr in this.myRoomActors()){
             const actor = this.myRoomActors()[aNr];
-            actor.setVisual(new Visual(actor));
+            if(!actor.hasVisual()) actor.setVisual(new Visual(actor));
         }
     }
 

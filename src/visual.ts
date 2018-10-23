@@ -1,5 +1,7 @@
 import Actor from "./actor";
 
+// TODO: 不要にnew Visualされている
+
 export default class Visual {
     private canvas  : HTMLCanvasElement;
     private canvasW : number;
@@ -17,14 +19,13 @@ export default class Visual {
         this.context = <CanvasRenderingContext2D>this.canvas.getContext('2d');
         this.playerW = this.canvasW / 10;
         this.playerH = this.canvasH / 10;
-        this.update(0, 0);
     }
 
     update(x : number, y : number){
         this.context.clearRect(this.prePosX, this.prePosY, this.prePosX + this.playerW, this.prePosY + this.playerH);
+        this.context.fillRect(x, y, x + this.playerW, y + this.playerH);
         this.prePosX = x;
         this.prePosY = y;
-        this.context.fillRect(this.prePosX, this.prePosY, this.prePosX + this.playerW, this.prePosY + this.playerH);
     }
 
 }
