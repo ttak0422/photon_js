@@ -58,7 +58,7 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
 
     onStateChange = (() => {
         const LBC = Photon.LoadBalancing.LoadBalancingClient;
-        return function(state) {
+        return (state) => {
             const stateText =
                 state == LBC.State.Joined ?
                     `State: ${LBC.StateToName(state)}, RoomName: ${this.myRoom().name}` :
