@@ -1,5 +1,6 @@
 import Room from './room';
 import Actor from './Actor';
+import Visual from './visual';
 
 export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
     wss     : boolean;
@@ -46,10 +47,12 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
 
     onJoinRoom(){
         console.log(`Room[${this.myRoom().name}]に入室しました`);
+        this.setupScene();
     }
 
     onActorJoin(actor : Actor){
         console.log(`Actor ${actor.actorNr} が入室しました`);
+        actor.setVisual(new Visual(actor));
     }
 
     onActorLeave(actor : Actor){
@@ -113,6 +116,9 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
             this.connectToRegionMaster("JP");
         }
 
+        this.setupUI();
+        this.setupScene();
+
         this.timerToken = setInterval(() => {
             this.update();
         }, this.intervalTime);
@@ -126,6 +132,32 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
         for(let x in this.myRoomActors()){
             if(x === "-1") break; // 誰もいない
             this.myRoomActors()[x].update();
+        }
+    }
+
+    private setupUI(){
+        //const canvas = <HTMLCanvasElement>document.getElementById('canvas');
+
+        window.addEventListener("keydown", ( () => {
+            const key = {
+                37 : [-1, 0], //left
+                39 : [ 1, 0], //right
+                40 : [ 0, 1], //down
+                38 : [ 0,-1], //up
+            };
+            return (e) => {
+                if(key[e.keyCode]){
+                    const [x, y] = key[e.keyCode];
+                    this.myActor().moveLocal(x, y);
+                }
+            }
+        })());
+    }
+
+    private setupScene(){
+        for(let aNr in this.myRoomActors()){
+            const actor = this.myRoomActors()[aNr];
+            actor.setVisual(new Visual(actor));
         }
     }
 
