@@ -3,9 +3,7 @@ import Actor     from './Actor';
 import Visual    from './visual';
 import { Event } from './constants';
 
-// TODO: 途中から入ったプレイヤーの処理
 // TODO: 途中から入ると他のプレイヤーの位置が(0,0)
-// TODO: 移動のイベント
 
 export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
     wss     : boolean;
