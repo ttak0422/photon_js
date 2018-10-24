@@ -37,8 +37,8 @@ export default class Actor extends Photon.LoadBalancing.Actor {
     }
 
     clearVisual(){
-        if(this.visual){
-            //this.visual.clear();
+        if(!!this.visual){
+            this.visual.clear();
         }
     }
 

@@ -1,6 +1,9 @@
-import Room from './room';
-import Actor from './Actor';
+import Room   from './room';
+import Actor  from './Actor';
 import Visual from './visual';
+
+// TODO: 途中から入ったプレイヤーの処理
+// TODO: いなくなった際の処理
 
 export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
     wss     : boolean;
@@ -56,6 +59,9 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
     }
 
     onActorLeave(actor : Actor){
+        if(!actor.isLocal){
+            actor.clearVisual();
+        }
         console.log(`Actor ${actor.actorNr} が退出しました`);
     }
 
@@ -154,7 +160,7 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
 
     private setupScene(){
         for(let aNr in this.myRoomActors()){
-            const actor = this.myRoomActors()[aNr];
+            const actor = <Actor>this.myRoomActors()[aNr];
             if(!actor.hasVisual()) actor.setVisual(new Visual(actor));
         }
     }
