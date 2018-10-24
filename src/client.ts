@@ -1,9 +1,11 @@
 import Room   from './room';
 import Actor  from './Actor';
 import Visual from './visual';
+import { Event } from './constants';
 
 // TODO: 途中から入ったプレイヤーの処理
-// TODO: いなくなった際の処理
+// TODO: 途中から入ると他のプレイヤーの位置が(0,0)
+// TODO: 移動のイベント
 
 export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
     wss     : boolean;
@@ -63,6 +65,18 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
             actor.clearVisual();
         }
         console.log(`Actor ${actor.actorNr} が退出しました`);
+    }
+
+    onEvent(code : number, content : any, actorNr : number){
+        switch(code){
+            case Event.Move:
+                const actor = <Actor>(this.myRoomActors()[actorNr]);
+                actor.move(content[0][0], content[0][1]);
+                console.log(`Event.Move ${content[0][0]} ${content[0][1]}`)
+                break;
+            default:
+                break;
+        }
     }
 
     onStateChange = (() => {

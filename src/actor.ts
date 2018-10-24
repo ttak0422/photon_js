@@ -77,8 +77,8 @@ export default class Actor extends Photon.LoadBalancing.Actor {
     }
 
     moveLocal(x : number, y : number){
-        this.raiseEvent(Event.Move, { 1 : [this.posX, this.posY] });
         this.move(x, y);
+        this.raiseEvent(Event.Move, { 0 : [x, y] });
     }
 
     moveRemote(){

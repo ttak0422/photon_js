@@ -2,9 +2,9 @@ import Actor from "./actor";
 
 export default class Visual {
     private canvas  : HTMLCanvasElement;
+    private context : CanvasRenderingContext2D;
     private canvasW : number;
     private canvasH : number;
-    private context : CanvasRenderingContext2D;
     private prePosX : number = 0;
     private prePosY : number = 0;
     private playerH : number;
@@ -24,6 +24,11 @@ export default class Visual {
         this.context.clearRect(this.prePosX, this.prePosY, this.playerW, this.playerH);
     }
 
+    /**
+     * 描写の更新
+     * @param x 移動後の左上の頂点のx座標
+     * @param y 移動後の左上の頂点のy座標
+     */
     update(x : number, y : number){
         this.context.clearRect(this.prePosX, this.prePosY, this.playerW, this.playerH);
         this.context.fillRect(x, y, this.playerW, this.playerH);
