@@ -1,7 +1,6 @@
 import Client    from './client';
-import Room      from './room';
+import Visual    from './visual';
 import { Event } from './constants';
-import Visual from './visual';
 
 export default class Actor extends Photon.LoadBalancing.Actor {
     client  : Client;
@@ -67,7 +66,11 @@ export default class Actor extends Photon.LoadBalancing.Actor {
         console.log("updateRemote");
     }
 
-    // TODO: 見直し
+    /**
+     * 移動処理を行う
+     * @param x -1, 0, 1
+     * @param y -1, 0, 1
+     */
     move(x : number, y : number){
         this.posX += this.speed * x;
         this.posY += this.speed * y;
@@ -76,13 +79,14 @@ export default class Actor extends Photon.LoadBalancing.Actor {
         }
     }
 
+    /**
+     * 移動処理の呼び出し，Moveイベントの発行を行う．
+     * @param x -1, 0, 1
+     * @param y -1, 0, 1
+     */
     moveLocal(x : number, y : number){
         this.move(x, y);
         this.raiseEvent(Event.Move, { 0 : [x, y] });
-    }
-
-    moveRemote(){
-
     }
 
 }

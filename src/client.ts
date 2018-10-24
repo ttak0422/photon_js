@@ -1,6 +1,6 @@
-import Room   from './room';
-import Actor  from './Actor';
-import Visual from './visual';
+import Room      from './room';
+import Actor     from './Actor';
+import Visual    from './visual';
 import { Event } from './constants';
 
 // TODO: 途中から入ったプレイヤーの処理
