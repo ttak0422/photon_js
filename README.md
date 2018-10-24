@@ -1,4 +1,6 @@
-# photon_js
+# Photon Client Javascript SDK を利用した実装テスト
+
+Photon Client Javascript SDKは[こちら](https://www.photonengine.com/)から入手
 
 ## 準備
 
