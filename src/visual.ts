@@ -2,7 +2,6 @@ import Actor from './actor';
 
 export default class Visual {
     private canvas  : HTMLCanvasElement;
-    private context : CanvasRenderingContext2D;
     private canvasW : number;
     private canvasH : number;
     private playerH : number;
@@ -14,10 +13,9 @@ export default class Visual {
         this.canvas  = <HTMLCanvasElement>document.getElementById('canvas');
         this.canvasW = this.canvas.width;
         this.canvasH = this.canvas.height;
-        this.context = <CanvasRenderingContext2D>this.canvas.getContext('2d');
         this.playerW = Math.floor(this.canvasW / 10);
         this.playerH = Math.floor(this.canvasH / 10);
-        this.player = this.generatePlayerObject();
+        this.player  = this.generatePlayerObject();
         document.body.appendChild(this.player);
         this.update(actor.posX, actor.posY);
     }
