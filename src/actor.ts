@@ -68,14 +68,14 @@ export default class Actor extends Photon.LoadBalancing.Actor {
 
     /**
      * 移動処理を行う
-     * @param x -1, 0, 1
-     * @param y -1, 0, 1
+     * @param nxtPosX 移動後のx座標
+     * @param nxtPosY 移動後のy座標
      */
-    move(x : number, y : number){
-        this.posX += this.speed * x;
-        this.posY += this.speed * y;
+    move(nxtPosX : number, nxtPosY : number){
+        this.posX = nxtPosX;
+        this.posY = nxtPosY;
         if(this.visual){
-            this.visual.update(this.posX, this.posY);
+            this.visual.update(nxtPosX, nxtPosY);
         }
     }
 
@@ -85,8 +85,10 @@ export default class Actor extends Photon.LoadBalancing.Actor {
      * @param y -1, 0, 1
      */
     moveLocal(x : number, y : number){
-        this.move(x, y);
-        this.raiseEvent(Event.Move, { 0 : [x, y] });
+        const nxtPosX = this.posX + this.speed * x;
+        const nxtPosY = this.posY + this.speed * y;
+        this.move(nxtPosX, nxtPosY);
+        this.raiseEvent(Event.Move, { 0 : [nxtPosX, nxtPosY] });
     }
 
 }
