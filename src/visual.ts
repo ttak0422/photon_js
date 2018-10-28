@@ -30,7 +30,7 @@ export default class Visual {
      * @param y 移動後の左上の頂点のy座標
      */
     update(x : number, y : number) : void {
-        this.player.style.top = `${y}px`;
+        this.player.style.top  = `${y}px`;
         this.player.style.left = `${x}px`;
     }
 
@@ -41,7 +41,7 @@ export default class Visual {
         newElem.style.backgroundColor = 'yellow';
         newElem.style.width  = `${this.playerW}px`;
         newElem.style.height = `${this.playerH}px`;
-        newElem.style.position = 'fixed'
+        newElem.style.position = 'absolute';
         newElem.style.zIndex = '1';
         return newElem;
     }
