@@ -56,6 +56,8 @@ export default class Client extends Photon.LoadBalancing.LoadBalancingClient {
     onActorJoin(actor : Actor){
         console.log(`Actor ${actor.actorNr} が入室しました`);
         if(!actor.hasVisual()) actor.setVisual(new Visual(actor));
+        // 入室してきたactorのために位置情報を発信
+        this.myActor().sendPosition();
     }
 
     onActorLeave(actor : Actor){

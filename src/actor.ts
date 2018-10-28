@@ -91,4 +91,8 @@ export default class Actor extends Photon.LoadBalancing.Actor {
         this.raiseEvent(Event.Move, { 0 : [nxtPosX, nxtPosY] });
     }
 
+    sendPosition(){
+        this.raiseEvent(Event.Move, { 0 : [this.posX, this.posY] });
+    }
+
 }
